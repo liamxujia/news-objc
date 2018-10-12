@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NENewsViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NENewsPlainTextCell : UITableViewCell <NEViewModelProtocol>
+@interface NENewsPlainTextCell : UITableViewCell
 
 @end
 

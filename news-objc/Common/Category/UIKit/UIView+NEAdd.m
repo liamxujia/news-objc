@@ -21,7 +21,7 @@ static char kDTActionHandlerChangeGestureKey;
 static char kDTActionHandlerLongPressBlockKey;
 static char kDTActionHandlerLongPressGestureKey;
 
-@implementation UIView (CAAdd)
+@implementation UIView (NEAdd)
 @dynamic x;
 @dynamic y;
 @dynamic width;

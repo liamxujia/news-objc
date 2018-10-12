@@ -8,6 +8,6 @@
 
 #import "NENewsModel.h"
 
-@implementation NENewsModel
+@implementation NENewsModel 
 
 @end

@@ -10,9 +10,7 @@ use_frameworks!
  
 target 'news-objc' do 
 pod 'AFNetworking', '~> 3.2.1'
-pod 'MGJRouter', '~>0.10.0'
 pod 'Masonry', '~>1.1.0'
-pod 'SVProgressHUD', '~>2.2.5'
 pod 'SDWebImage', '~> 4.4.2'
 pod 'ReactiveObjC', '~> 3.1.0'
 pod 'YYModel', '~> 1.0.4'

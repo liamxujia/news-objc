@@ -32,8 +32,10 @@
     [super viewDidLoad];
     [self subviewsLayout];
     [self.searchButton setTitle:@"看一看" forState:UIControlStateNormal];
-    // 把搜索框Keyword绑定到ViewModel
+    // 把搜索框Keyword绑定到ViewModel, 把Keywordb绑定到title
     RAC(_viewModel, keyword) = self.searchView.searchSignal;
+    RAC(self.navigationItem, title) = RACObserve(_viewModel, keyword);
+    
     // 不产生副作用的写法
     RAC(_searchButton, backgroundColor) = [RACObserve(_searchButton, enabled) map:^id(NSNumber *value) {
         return value.boolValue ? kMainColor : kColor(0x999999);
@@ -44,11 +46,16 @@
      }];
      */
     @weakify(self);
-    [[[[_viewModel searchCommand] executionSignals] switchToLatest] subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        [self.tableView reloadData];
-    }];
     self.searchButton.rac_command = [_viewModel searchCommand];
+    [[[self.searchButton.rac_command executionSignals] switchToLatest] subscribeNext:^(RACSignal<id> * _Nullable x) {
+        @strongify(self);
+        [self.searchView endEditing:true];
+        [[[self.viewModel newsSignal] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+            [self.tableView reloadData];
+        } error:^(NSError * _Nullable error) {
+            
+        }];
+    }];
 }
 
 - (void)subviewsLayout {
@@ -79,9 +86,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_viewModel bindIndexPath:indexPath];
+    @weakify(self);
+    [[[_viewModel.deleteCommand executionSignals] switchToLatest] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_viewModel.cellIdentifier forIndexPath:indexPath];
-    [cell performSelector:@selector(bindViewModel:) withObject:nil];
+    cell.contentView.backgroundColor = kPlaceholderColor;
+    [cell performSelector:@selector(bindViewModel:) withObject:_viewModel];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
 - (NESearchView *)searchView {
@@ -98,12 +115,11 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.backgroundColor = kPlaceholderColor;
-        _tableView.estimatedRowHeight = 80.f;
+        _tableView.estimatedRowHeight = 150.f;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [[UIView alloc] init];
         [_tableView registerClass:[NSClassFromString(NENewsPlainTextCellIdentifer) class] forCellReuseIdentifier:NENewsPlainTextCellIdentifer];
-        [_tableView registerClass:[NSClassFromString(NENewsFirstPictureCellIdentifer) class] forCellReuseIdentifier:NENewsFirstPictureCellIdentifer];
         [_tableView registerClass:[NSClassFromString(NENewsTreblePictureCellIdentifer) class] forCellReuseIdentifier:NENewsTreblePictureCellIdentifer];
         _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         if (@available(iOS 11.0, *)) {

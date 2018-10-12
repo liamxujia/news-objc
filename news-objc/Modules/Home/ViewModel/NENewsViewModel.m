@@ -9,10 +9,11 @@
 #import "NENewsViewModel.h"
 #import "NENewsModel.h"
 #import "NEHTTPManager.h"
+#import <YYModel/YYModel.h>
 
 @implementation NENewsViewModel
-- (NSString *)cellIdentifier {
-    return NENewsPlainTextCellIdentifer;
+- (NSUInteger)numberOfRows {
+    return self.feedEntities.count;
 }
 
 - (RACSignal *)newsSignal {
@@ -20,20 +21,39 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setObject:@"Pe2bj27PF0F5JfUvOKHd07zbx6BTRowGSJ7d1bcefzai1ed6OCsQrU02JF86vAFZ" forKey:@"apikey"];
         [params setObject:self.keyword forKey:@"kw"];
-        [[NEHTTPManager sharedManager] GET:@"http://api01.idataapi.cn:8000/news/qihoo" params:params success:^(id responseObject) {
-            [subscriber sendCompleted];
+        NSURLSessionTask *task = [[NEHTTPManager sharedManager] GET:@"http://api01.idataapi.cn:8000/news/qihoo" params:params success:^(id responseObject) {
+            NSArray *news = [NSArray yy_modelArrayWithClass:[NENewsModel class] json:responseObject[@"data"]];
+            [self feedEntitiesWithResults:news completedHandler:^{
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            }];
         } failure:^(NSError *error) {
             [subscriber sendError:error];
         }];
-        return nil;
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
     }];
 }
 
 - (void)bindIndexPath:(NSIndexPath *)indexPath {
-    self.title = @"标题";
-    self.content = @"内容";
-    self.timeline = @"时间";
-    self.posterName = @"来自";
+    NENewsModel *model = self.feedEntities[indexPath.row];
+    self.title = model.title;
+    self.content = model.content;
+    self.timeline = model.publishDateStr;
+    self.posterName = model.posterScreenName;
+    self.pictureUrls = model.imageUrls;
+    self.newsUrl = model.url;
+    self.cellIdentifier = NENewsPlainTextCellIdentifer;
+    self.cellIdentifier = self.pictureUrls.count >= 3 ? NENewsTreblePictureCellIdentifer : NENewsPlainTextCellIdentifer;
+    self.deleteCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [self.feedEntities removeObject:model];
+            [subscriber sendNext:nil];
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }];
 }
 
 - (RACCommand *)searchCommand {
@@ -62,6 +82,7 @@
     }];
     return [[RACCommand alloc] initWithEnabled:enableSignal signalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:nil];
             [subscriber sendCompleted];
             return nil;
         }];

@@ -10,9 +10,9 @@
 #import <AFNetworking/AFNetworking.h>
 
 #ifdef DEBUG
-static NSString *const kHTTPBaseURL = @"http://api.github.com";
+static NSString *const kHTTPBaseURL = @"";
 #else
-static NSString *const kHTTPBaseURL = @"http://api.github.com";
+static NSString *const kHTTPBaseURL = @"";
 #endif
 
 @interface NEHTTPManager ()
@@ -79,9 +79,10 @@ static NSString *const kHTTPBaseURL = @"http://api.github.com";
     if (!_sessionManager) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         configuration.timeoutIntervalForRequest = 10.f;
-        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kHTTPBaseURL] sessionConfiguration:configuration];
-        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+//        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kHTTPBaseURL] sessionConfiguration:configuration];
+        _sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+//        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+//        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     }
     return _sessionManager;
 }

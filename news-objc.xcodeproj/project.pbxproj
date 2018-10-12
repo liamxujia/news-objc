@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FB9DCE021707F96001DC19E /* UIImageView+NEAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9DCDE21707F96001DC19E /* UIImageView+NEAdd.m */; };
 		1FD55374216DF55C00266004 /* NEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD55373216DF55C00266004 /* NEAppDelegate.m */; };
 		1FD5537C216DF55F00266004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5537B216DF55F00266004 /* Assets.xcassets */; };
 		1FD55382216DF55F00266004 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD55381216DF55F00266004 /* main.m */; };
 		1FD553AE216DF6DB00266004 /* UIView+NEAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5539B216DF6DB00266004 /* UIView+NEAdd.m */; };
 		1FD553AF216DF6DB00266004 /* Foundation+STLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5539E216DF6DB00266004 /* Foundation+STLog.m */; };
 		1FD553B0216DF6DB00266004 /* NEHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553A1216DF6DB00266004 /* NEHTTPManager.m */; };
-		1FD553B1216DF6DB00266004 /* NEProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553A6216DF6DB00266004 /* NEProgressHUD.m */; };
 		1FD553B2216DF6DB00266004 /* NESuperViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553A8216DF6DB00266004 /* NESuperViewModel.m */; };
 		1FD553B7216DF7AD00266004 /* NENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553B3216DF7AD00266004 /* NENavigationController.m */; };
 		1FD553BF216EE76C00266004 /* NEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553BE216EE76C00266004 /* NEHomeViewController.m */; };
@@ -22,7 +22,6 @@
 		1FD553C8216EF1E900266004 /* NENewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553C7216EF1E900266004 /* NENewsModel.m */; };
 		1FD553D0216EF6AC00266004 /* NESearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553CE216EF6AC00266004 /* NESearchView.m */; };
 		1FD553D3216EF9AC00266004 /* NENewsPlainTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D2216EF9AC00266004 /* NENewsPlainTextCell.m */; };
-		1FD553D6216EF9F200266004 /* NENewsFirstPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D5216EF9F200266004 /* NENewsFirstPictureCell.m */; };
 		1FD553D9216EFCBA00266004 /* NENewsTreblePictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D8216EFCBA00266004 /* NENewsTreblePictureCell.m */; };
 		1FD553DE216F2E1E00266004 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD553DD216F2E1D00266004 /* Default-568h@2x.png */; };
 		7601581AB04B713763595F07 /* Pods_news_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDFAFFE38E0E6B7056BC20E /* Pods_news_objc.framework */; };
@@ -30,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		03E284D706766E29EF8CA224 /* Pods-news-objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-news-objc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-news-objc/Pods-news-objc.debug.xcconfig"; sourceTree = "<group>"; };
+		1FB9DCDE21707F96001DC19E /* UIImageView+NEAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NEAdd.m"; sourceTree = "<group>"; };
+		1FB9DCDF21707F96001DC19E /* UIImageView+NEAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NEAdd.h"; sourceTree = "<group>"; };
 		1FD5536F216DF55C00266004 /* news-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "news-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD55372216DF55C00266004 /* NEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEAppDelegate.h; sourceTree = "<group>"; };
 		1FD55373216DF55C00266004 /* NEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEAppDelegate.m; sourceTree = "<group>"; };
@@ -42,8 +43,6 @@
 		1FD553A0216DF6DB00266004 /* NEHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPManager.h; sourceTree = "<group>"; };
 		1FD553A1216DF6DB00266004 /* NEHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPManager.m; sourceTree = "<group>"; };
 		1FD553A3216DF6DB00266004 /* NEViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEViewModelProtocol.h; sourceTree = "<group>"; };
-		1FD553A5216DF6DB00266004 /* NEProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEProgressHUD.h; sourceTree = "<group>"; };
-		1FD553A6216DF6DB00266004 /* NEProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEProgressHUD.m; sourceTree = "<group>"; };
 		1FD553A8216DF6DB00266004 /* NESuperViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESuperViewModel.m; sourceTree = "<group>"; };
 		1FD553A9216DF6DB00266004 /* NESuperViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESuperViewModel.h; sourceTree = "<group>"; };
 		1FD553AA216DF6DB00266004 /* news-objc.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "news-objc.pch"; sourceTree = "<group>"; };
@@ -61,8 +60,6 @@
 		1FD553CF216EF6AC00266004 /* NESearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESearchView.h; sourceTree = "<group>"; };
 		1FD553D1216EF9AC00266004 /* NENewsPlainTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NENewsPlainTextCell.h; sourceTree = "<group>"; };
 		1FD553D2216EF9AC00266004 /* NENewsPlainTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NENewsPlainTextCell.m; sourceTree = "<group>"; };
-		1FD553D4216EF9F200266004 /* NENewsFirstPictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NENewsFirstPictureCell.h; sourceTree = "<group>"; };
-		1FD553D5216EF9F200266004 /* NENewsFirstPictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NENewsFirstPictureCell.m; sourceTree = "<group>"; };
 		1FD553D7216EFCBA00266004 /* NENewsTreblePictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NENewsTreblePictureCell.h; sourceTree = "<group>"; };
 		1FD553D8216EFCBA00266004 /* NENewsTreblePictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NENewsTreblePictureCell.m; sourceTree = "<group>"; };
 		1FD553DD216F2E1D00266004 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -164,8 +161,6 @@
 			children = (
 				1FD553D1216EF9AC00266004 /* NENewsPlainTextCell.h */,
 				1FD553D2216EF9AC00266004 /* NENewsPlainTextCell.m */,
-				1FD553D4216EF9F200266004 /* NENewsFirstPictureCell.h */,
-				1FD553D5216EF9F200266004 /* NENewsFirstPictureCell.m */,
 				1FD553D7216EFCBA00266004 /* NENewsTreblePictureCell.h */,
 				1FD553D8216EFCBA00266004 /* NENewsTreblePictureCell.m */,
 			);
@@ -178,7 +173,6 @@
 				1FD55399216DF6DB00266004 /* Category */,
 				1FD5539F216DF6DB00266004 /* NEHTTPManager */,
 				1FD553A2216DF6DB00266004 /* Protocol */,
-				1FD553A4216DF6DB00266004 /* NEProgressHUD */,
 				1FD553CD216EF6AC00266004 /* NESearchView */,
 				1FD553A7216DF6DB00266004 /* SuperClass */,
 				1FD553AA216DF6DB00266004 /* news-objc.pch */,
@@ -198,6 +192,8 @@
 		1FD5539A216DF6DB00266004 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				1FB9DCDF21707F96001DC19E /* UIImageView+NEAdd.h */,
+				1FB9DCDE21707F96001DC19E /* UIImageView+NEAdd.m */,
 				1FD5539C216DF6DB00266004 /* UIView+NEAdd.h */,
 				1FD5539B216DF6DB00266004 /* UIView+NEAdd.m */,
 			);
@@ -227,15 +223,6 @@
 				1FD553A3216DF6DB00266004 /* NEViewModelProtocol.h */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		1FD553A4216DF6DB00266004 /* NEProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				1FD553A5216DF6DB00266004 /* NEProgressHUD.h */,
-				1FD553A6216DF6DB00266004 /* NEProgressHUD.m */,
-			);
-			path = NEProgressHUD;
 			sourceTree = "<group>";
 		};
 		1FD553A7216DF6DB00266004 /* SuperClass */ = {
@@ -366,21 +353,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-news-objc/Pods-news-objc-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/MGJRouter/MGJRouter.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGJRouter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,15 +379,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD553B2216DF6DB00266004 /* NESuperViewModel.m in Sources */,
+				1FB9DCE021707F96001DC19E /* UIImageView+NEAdd.m in Sources */,
 				1FD553BF216EE76C00266004 /* NEHomeViewController.m in Sources */,
 				1FD553C2216EF1B600266004 /* NENewsViewController.m in Sources */,
 				1FD553AE216DF6DB00266004 /* UIView+NEAdd.m in Sources */,
 				1FD55382216DF55F00266004 /* main.m in Sources */,
 				1FD553C8216EF1E900266004 /* NENewsModel.m in Sources */,
-				1FD553D6216EF9F200266004 /* NENewsFirstPictureCell.m in Sources */,
 				1FD553B0216DF6DB00266004 /* NEHTTPManager.m in Sources */,
 				1FD553AF216DF6DB00266004 /* Foundation+STLog.m in Sources */,
-				1FD553B1216DF6DB00266004 /* NEProgressHUD.m in Sources */,
 				1FD553B7216DF7AD00266004 /* NENavigationController.m in Sources */,
 				1FD553C5216EF1D500266004 /* NENewsViewModel.m in Sources */,
 				1FD553D3216EF9AC00266004 /* NENewsPlainTextCell.m in Sources */,
@@ -546,6 +528,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stlndm.www.news-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Debug;
 		};
@@ -566,6 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stlndm.www.news-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Release;
 		};

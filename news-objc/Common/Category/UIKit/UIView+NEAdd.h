@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIView+NEAdd.h"
 
-@interface UIView (CAAdd)
+@interface UIView (NEAdd)
 @property (nonatomic, assign) CGFloat   x;
 @property (nonatomic, assign) CGFloat   y;
 @property (nonatomic, assign) CGFloat   width;

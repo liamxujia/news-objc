@@ -31,7 +31,9 @@
 #define kMainHighlightedColor kAlphaColor(0x29B346, 0.8)
 #define kMainDisableColor kAlphaColor(0x29B346, 0.6)
 #define kPriceColor kColor(0xFF3333)
-#define kTextColor kColor(0x333333)
+#define kTextTitleColor kColor(0x333333)
+#define kTextContentColor kColor(0x666666)
+#define kTextDescriptionColor kColor(0x999999)
 #define kPlaceholderColor kColor(0xF5F5F5)
 #define kLineColor kColor(0xE6E6E6)
 
