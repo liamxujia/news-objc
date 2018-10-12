@@ -1,2 +1,2 @@
 # news-objc
-MVVM 简单Demo
+Project MVVM suggestion
