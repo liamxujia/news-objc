@@ -8,14 +8,17 @@
 
 #import "NESuperViewModel.h"
 
-static NSString *const NENewsPlainTextCell = @"NENewsPlainTextCell";
-static NSString *const NENewsFirstPictureCell = @"NENewsFirstPictureCell";
-static NSString *const NENewsTreblePictureCell = @"NENewsTreblePictureCell";
+static NSString *const NENewsPlainTextCellIdentifer = @"NENewsPlainTextCell";
+static NSString *const NENewsFirstPictureCellIdentifer = @"NENewsFirstPictureCell";
+static NSString *const NENewsTreblePictureCellIdentifer = @"NENewsTreblePictureCell";
 
 @interface NENewsViewModel : NESuperViewModel
+@property(nonatomic, copy) NSString *keyword;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) NSString *content;
 @property(nonatomic, copy) NSString *timeline;
 @property(nonatomic, copy) NSString *posterName;
+- (RACSignal *)newsSignal;
+- (RACCommand *)searchCommand;
 @end
 

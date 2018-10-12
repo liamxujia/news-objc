@@ -39,13 +39,6 @@
     }];
 }
 
-- (RACSignal *)searchSignal {
-    if (_searchSignal) {
-        _searchSignal = [[RACSignal alloc] init];
-    }
-    return _searchSignal;
-}
-
 - (UIView *)containerView {
     if (!_containerView) {
         _containerView = [[UIView alloc] init];

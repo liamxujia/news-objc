@@ -14,6 +14,7 @@
 // h不引用Cell
 @interface NENewsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *searchButton;
 @property (nonatomic, strong) NESearchView *searchView;
 @property (nonatomic, strong) NENewsViewModel *viewModel;
 @end
@@ -30,14 +31,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self subviewsLayout];
+    [self.searchButton setTitle:@"看一看" forState:UIControlStateNormal];
+    // 把搜索框Keyword绑定到ViewModel
+    RAC(_viewModel, keyword) = self.searchView.searchSignal;
+    // 不产生副作用的写法
+    RAC(_searchButton, backgroundColor) = [RACObserve(_searchButton, enabled) map:^id(NSNumber *value) {
+        return value.boolValue ? kMainColor : kColor(0x999999);
+    }];
+    /*
+     [RACObserve(_signInButton, enabled) subscribeNext:^(NSNumber *value) {
+     self.signInButton.backgroundColor = value.boolValue ? kMainColor : kMainDisableColor;
+     }];
+     */
+    @weakify(self);
+    [[[[_viewModel searchCommand] executionSignals] switchToLatest] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
+    self.searchButton.rac_command = [_viewModel searchCommand];
 }
 
 - (void)subviewsLayout {
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.searchView];
-    [_searchView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
-        make.height.mas_equalTo(30.f);
+    [self.view addSubview:self.searchButton];
+    [self.searchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).inset(kNavigationControllerHeight);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.searchButton.mas_left);
+        make.height.mas_equalTo(50.f);
+    }];
+    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).inset(kNavigationControllerHeight);
+        make.left.equalTo(self.searchView.mas_right);
+        make.height.mas_equalTo(50.f);
+        make.width.mas_equalTo(80.f);
     }];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
@@ -52,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_viewModel bindIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_viewModel.cellIdentifier forIndexPath:indexPath];
-    [cell performSelector:@selector(bindViewModel:)];
+    [cell performSelector:@selector(bindViewModel:) withObject:nil];
     return cell;
 }
 
@@ -74,9 +102,9 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [[UIView alloc] init];
-        [_tableView registerClass:[NSClassFromString(NENewsPlainTextCell) class] forCellReuseIdentifier:NENewsPlainTextCell];
-        [_tableView registerClass:[NSClassFromString(NENewsFirstPictureCell) class] forCellReuseIdentifier:NENewsFirstPictureCell];
-        [_tableView registerClass:[NSClassFromString(NENewsTreblePictureCell) class] forCellReuseIdentifier:NENewsTreblePictureCell];
+        [_tableView registerClass:[NSClassFromString(NENewsPlainTextCellIdentifer) class] forCellReuseIdentifier:NENewsPlainTextCellIdentifer];
+        [_tableView registerClass:[NSClassFromString(NENewsFirstPictureCellIdentifer) class] forCellReuseIdentifier:NENewsFirstPictureCellIdentifer];
+        [_tableView registerClass:[NSClassFromString(NENewsTreblePictureCellIdentifer) class] forCellReuseIdentifier:NENewsTreblePictureCellIdentifer];
         _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -87,4 +115,11 @@
     return _tableView;
 }
 
+
+- (UIButton *)searchButton {
+    if (!_searchButton) {
+        _searchButton = [[UIButton alloc] init];
+    }
+    return _searchButton;
+}
 @end

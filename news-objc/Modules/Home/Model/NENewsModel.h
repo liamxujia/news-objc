@@ -11,7 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NENewsModel : NSObject
-
+@property (nonatomic , copy) NSString *title;
+@property (nonatomic , copy) NSString *content;
+@property (nonatomic , copy) NSString *posterId;
+@property (nonatomic , assign) NSInteger publishDate;
+@property (nonatomic , copy) NSString  *publishDateStr;
+@property (nonatomic , copy) NSString  *posterScreenName;
+@property (nonatomic , copy) NSString  *url;
 @end
 
 NS_ASSUME_NONNULL_END

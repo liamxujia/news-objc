@@ -7,9 +7,8 @@
 //
 
 #import "NENewsPlainTextCell.h"
-#import "NENewsViewModel.h"
 
-@interface NENewsPlainTextCell ()
+@interface NENewsPlainTextCell () 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
@@ -28,18 +27,20 @@
     [self.containerView addSubview:self.deleteButton];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10.f, 10.f, 0, 10.f);
+        make.height.mas_equalTo(100);
         make.edges.equalTo(self.contentView).insets(insets);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.contentView).inset(15);
+        make.left.top.right.equalTo(self.containerView).inset(15);
     }];
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.contentView).inset(15);
+        make.left.right.equalTo(self.containerView).inset(15);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
     }];
     [self.posterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentLabel.mas_bottom).offset(15);
         make.left.equalTo(self.containerView);
+        make.bottom.equalTo(self.containerView).inset(15);
     }];
     [self.timelineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.posterLabel.mas_right).offset(15);
@@ -93,5 +94,12 @@
         _posterLabel = [[UILabel alloc] init];
     }
     return _posterLabel;
+}
+
+- (UIView *)containerView {
+    if (!_containerView) {
+        _containerView = [[UIView alloc] init];
+    }
+    return _containerView;
 }
 @end

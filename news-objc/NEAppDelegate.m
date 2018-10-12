@@ -7,6 +7,8 @@
 //
 
 #import "NEAppDelegate.h"
+#import "NENavigationController.h"
+#import "NENewsViewController.h"
 
 @interface NEAppDelegate ()
 
@@ -16,7 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:kScreenRect];
+    NENewsViewController *newsViewController = [[NENewsViewController alloc] init];
+    NENavigationController *navigationController = [[NENavigationController alloc] initWithRootViewController:newsViewController];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -24,6 +24,7 @@
 		1FD553D3216EF9AC00266004 /* NENewsPlainTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D2216EF9AC00266004 /* NENewsPlainTextCell.m */; };
 		1FD553D6216EF9F200266004 /* NENewsFirstPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D5216EF9F200266004 /* NENewsFirstPictureCell.m */; };
 		1FD553D9216EFCBA00266004 /* NENewsTreblePictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD553D8216EFCBA00266004 /* NENewsTreblePictureCell.m */; };
+		1FD553DE216F2E1E00266004 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD553DD216F2E1D00266004 /* Default-568h@2x.png */; };
 		7601581AB04B713763595F07 /* Pods_news_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDFAFFE38E0E6B7056BC20E /* Pods_news_objc.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		1FD553D5216EF9F200266004 /* NENewsFirstPictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NENewsFirstPictureCell.m; sourceTree = "<group>"; };
 		1FD553D7216EFCBA00266004 /* NENewsTreblePictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NENewsTreblePictureCell.h; sourceTree = "<group>"; };
 		1FD553D8216EFCBA00266004 /* NENewsTreblePictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NENewsTreblePictureCell.m; sourceTree = "<group>"; };
+		1FD553DD216F2E1D00266004 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1FD553DF216F2E2400266004 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8909F619D11023C41A1E2BF7 /* Pods-news-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-news-objc.release.xcconfig"; path = "Pods/Target Support Files/Pods-news-objc/Pods-news-objc.release.xcconfig"; sourceTree = "<group>"; };
 		EFDFAFFE38E0E6B7056BC20E /* Pods_news_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_news_objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +86,8 @@
 		1FD55366216DF55C00266004 = {
 			isa = PBXGroup;
 			children = (
+				1FD553DD216F2E1D00266004 /* Default-568h@2x.png */,
+				1FD553DF216F2E2400266004 /* Default-568h@2x.png */,
 				1FD55371216DF55C00266004 /* news-objc */,
 				1FD55370216DF55C00266004 /* Products */,
 				40581104F0FCBD957259C203 /* Pods */,
@@ -328,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD5537C216DF55F00266004 /* Assets.xcassets in Resources */,
+				1FD553DE216F2E1E00266004 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +371,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -374,6 +381,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -537,7 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stlndm.www.news-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -557,7 +565,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stlndm.www.news-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
