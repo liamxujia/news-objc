@@ -1,6 +1,6 @@
 # news-objc
 Project MVVM suggestion
-面向Interface Layer编程：iOSMVVM架构建议
+面向Interface Layer编程：iOSMVVM架构的有效方法
 * 文件改造目标
 ViewController与Model解耦，Model对ViewController来说是透明的
 ViewModel文件不含有任何UIControl类及其子类
