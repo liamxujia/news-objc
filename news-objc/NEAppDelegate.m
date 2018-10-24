@@ -9,7 +9,10 @@
 #import "NEAppDelegate.h"
 #import "NENavigationController.h"
 #import "NENewsViewController.h"
-
+#import <Aspects/Aspects.h>
+#import <YYModel/YYModel.h>
+#import "NSObject+STListener.h"
+#import "STListener.h"
 @interface NEAppDelegate ()
 
 @end
@@ -18,12 +21,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [NSClassFromString(@"NENewsViewController") aspect_hookSelector:@selector(init) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo) {
+        id instance = aspectInfo.instance;
+        NSLog(@"st_allPropertyKey===%@", [instance st_allPropertyKey]);
+        if (![[instance st_allPropertyKey] containsObject:@"searchButton"]) return;
+        UIButton *searchButton = [instance valueForKey:@"searchButton"];
+        [searchButton aspect_hookSelector:@selector(touchesBegan:withEvent:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+            UIControlState searchButonState = [[aspectInfo.instance valueForKey:@"state"] integerValue];
+            NSLog(@"searchButonState===%ld", searchButonState);
+        } error:nil];
+    } error:nil];
     self.window = [[UIWindow alloc] initWithFrame:kScreenRect];
     NENewsViewController *newsViewController = [[NENewsViewController alloc] init];
     NENavigationController *navigationController = [[NENavigationController alloc] initWithRootViewController:newsViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     return YES;
+    
 }
 
 
